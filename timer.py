@@ -20,6 +20,7 @@ GPIO.setmode(GPIO.BOARD) # Mandatory as the MFRC522 libary is based on this
 DailyTotalSeconds = 10 * 60 * 1    # 5 hours
 Debug = False
 
+secondduration = 0.93
 ##################################################
 
 
@@ -148,14 +149,14 @@ class TabletDetect:
 
 
 LeftSeconds = DailyTotalSeconds
-
 cards = RFIDCards()
 display = TimerDisplay(LeftSeconds)
-
 LED = LEDS()
 switch = TabletDetect()
 
 print ("Tablet timer is running...")
+
+cursec = time.time()
 
 while(True):
 	cards.checkRFID()
@@ -176,7 +177,12 @@ while(True):
 		LED.red(0)
 		LED.green(0)
 	
-	time.sleep(1)
+	while cursec+1 > time.time():
+		time.sleep(0.001)
+	cursec = cursec + 1
+
+
+
 
 
 
