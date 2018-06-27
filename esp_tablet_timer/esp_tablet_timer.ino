@@ -446,6 +446,10 @@ if (timeLeft > 0) {
  else {
      CountDown = false;
  }
+ 
+ if ( (int(millis() / 1000) % 3600) == 0){ // Check for new day every hour
+    CheckDay();
+  }
 
   if (CountDown && timeLeft > 0) {
    timeNow = millis(); 
@@ -470,11 +474,7 @@ if (timeLeft > 0) {
      SaveLastTime(timeLeft);
   }
 
-  if ((timeLeft % 3600) == 0){ // Check for new day every hour
-    CheckDay();
-  }
-
-  if ((timeLeft % 3600) == 0 && timeLeft > 1) {  // Exectute every full hour, expect 0 hour
+   if ((timeLeft % 3600) == 0 && timeLeft > 1) {  // Exectute every full hour, expect 0 hour
     String hoursleft = String(int(timeLeft / 3600));
     if (int(timeLeft / 3600) == 1 ) {
       NotifyIFTTT("You have 1 hour left today on your iPad");
