@@ -20,8 +20,8 @@
 #include <ESP8266HTTPClient.h>
 #include <WiFiUdp.h>
 
-char ssid[] = "JanRichX";  //  your network SSID (name)
-char pass[] = "ikwilliefde";   
+char ssid[] = "your_ssid";  //  your network SSID (name)
+char pass[] = "your_password";   
 
 #define RST_PIN   0     // Configurable, see typical pin layout above
 #define SS_PIN    2    // Configurable, see typical pin layout above
